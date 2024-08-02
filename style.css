@@ -21,6 +21,7 @@ justify-content: center;
     display: grid;
     grid-template-columns: repeat(14,1fr);
     grid-template-rows: repeat(14,1fr);
+    padding: 10px;
 }
 .food{
     background-color: rgb(220,149,68);
