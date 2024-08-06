@@ -8,6 +8,7 @@ let velocityX=0;
 let velocityY=0;
 let gameOver=false;
 let setIntervalid
+let button;
 function randomposition(){
     FOODX=Math.floor(Math.random()*14)+1
     FOODY=Math.floor(Math.random()*14)+1
@@ -54,12 +55,15 @@ function main(){
     snakebody[0]=[snakex,snakey]
     for (let i = 0; i < snakebody.length; i++) {
         
-        setHtml+=`<div class="snake-head" style="grid-area: ${snakebody[i][1]}/${snakebody[i][0]};"></div>`
+        setHtml+=`<div class="snake-head" id="div${ i}" style="grid-area: ${snakebody[i][1]}/${snakebody[i][0]};"></div>`
+        if(i!=0&&snakebody[0][1]==snakebody[i][1]&&snakebody[0][0]==snakebody[i][0]){
+            gameOver=true;
+        }
     }
     if(snakex<=0||snakex>14||snakey>14||snakey<=0){
         gameOver=true;
     }
-   
+    button=gameOver;
 
 
 board.innerHTML=setHtml
