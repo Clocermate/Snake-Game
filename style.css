@@ -11,6 +11,8 @@ body{
     display: flex;
 align-items: center;
 justify-content: center;
+flex-direction: column;
+gap: 20px;
 }
 .board{
     width: 80vw;
@@ -27,5 +29,30 @@ justify-content: center;
     background-color: rgb(220,149,68);
 }
 .snake-head{
-    background-color: aliceblue;
+    background-color:rgb(219, 14, 14); ;
+}
+#div0{
+    background-color: rgb(14, 140, 219);
+}
+.btn{
+    width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+button{
+    font-size: 20px;
+    padding: 5px;
+    color: white;
+    background: transparent;
+    box-shadow: 2px 2px 10px rgb(49, 49, 49),-2px -2px 10px rgb(31, 31, 31),-2px -2px 10px black,-2px -2px 10px black;
+    border: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+button:hover{
+    box-shadow:inset 2px 2px 10px rgb(0,0,0) ;
+    font-size: small;
 }
