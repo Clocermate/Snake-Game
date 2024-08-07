@@ -9,10 +9,10 @@ let velocityY=0;
 let gameOver=false;
 let setIntervalid
 let button;
-let gameoversound=new Audio("negative_beeps-6008.mp3");
-let eatsound=new Audio("eat.mp3");
-let turnsound=new Audio("click.mp3");
-
+let gameoversound=new Audio("sounds/negative_beeps-6008.mp3");
+let eatsound=new Audio("sounds/eat.mp3");
+let turnsound=new Audio("sounds/click.mp3");
+let keys=document.querySelectorAll(".key")
 function randomposition(){
     FOODX=Math.floor(Math.random()*14)+1
     FOODY=Math.floor(Math.random()*14)+1
@@ -38,12 +38,17 @@ else if(e.key=="ArrowRight"&& velocityX!=-1){
     velocityY=0
     turnsound.play()
 }
+
 main()
+keys.forEach((key)=>{
+    key.addEventListener('click',()=>movesnake({key:key.dataset.key}))
+})
 }
 function showgameOver(){
     if(gameOver){
  clearInterval(setIntervalid)
  gameoversound.play()
+ turnsound.pause()
  document.removeEventListener("keydown",movesnake)
     }
 }
