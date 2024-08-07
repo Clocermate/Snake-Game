@@ -9,6 +9,10 @@ let velocityY=0;
 let gameOver=false;
 let setIntervalid
 let button;
+let gameoversound=new Audio("negative_beeps-6008.mp3");
+let eatsound=new Audio("eat.mp3");
+let turnsound=new Audio("click.mp3");
+
 function randomposition(){
     FOODX=Math.floor(Math.random()*14)+1
     FOODY=Math.floor(Math.random()*14)+1
@@ -17,24 +21,29 @@ function movesnake(e){
 if(e.key=="ArrowUp"&& velocityY!=1){
     velocityX=0
     velocityY=-1
+    turnsound.play()
 }
 else if(e.key=="ArrowDown"&& velocityY!=-1){
     velocityX=0
     velocityY=1
+    turnsound.play()
 }
 else if(e.key=="ArrowLeft"&& velocityX!=1){
     velocityX=-1
     velocityY=0
+    turnsound.play()
 }
 else if(e.key=="ArrowRight"&& velocityX!=-1){
     velocityX=1
     velocityY=0
+    turnsound.play()
 }
 main()
 }
 function showgameOver(){
     if(gameOver){
  clearInterval(setIntervalid)
+ gameoversound.play()
  document.removeEventListener("keydown",movesnake)
     }
 }
@@ -42,6 +51,7 @@ function main(){
     if(gameOver){return showgameOver()}
     if(snakex==FOODX&snakey==FOODY){
         randomposition()
+        eatsound.play()
         snakebody.push([FOODX,FOODY])
         console.log(snakebody)
     }
@@ -72,3 +82,6 @@ randomposition()
 main()
 setIntervalid =setInterval(main,150)
 document.addEventListener("keydown",movesnake)
+function reset(){
+    location.reload()
+}
